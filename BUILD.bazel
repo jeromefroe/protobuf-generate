@@ -1,0 +1,16 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@rules_proto_grpc//go:defs.bzl", "go_proto_compile")
+
+proto_library(
+    name = "api_proto",
+    srcs = ["api.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_protobuf//:any_proto",
+    ],
+)
+
+go_proto_compile(
+    name = "api_go_proto",
+    protos = ["api_proto"],
+)
